@@ -28,8 +28,111 @@ Create a HTML file to implement form based input and output.
 ## Step 6:
 Publish the website in the given URL.
 
-# PROGRAM :
+# PROGRAM :mohamed.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lamp Power Calculator</title>
+    <style>
+        body {
+            background: linear-gradient(90deg,#5761B2, #1FC5A8); 
+            
+        }
+
+        h1 {
+            color: darkblue;
+            font-size: 28px;
+        }
+
+        .container {
+            background-color: #ffffff;  
+            width: 500px;
+            padding: 50px; 
+        }
+
+        label {
+            font-size: 26px;
+            color: #333333;
+        }
+
+        input {
+            width: 80%;
+            font-size: 24px;
+            border-radius: 8px;
+            border: 2px solid #080707;
+        }
+
+        button {
+            font-size: 24px;
+            background-color: darkblue;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: navy;
+        }
+
+        h2 {
+            color: darkgreen;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Incandescent Bulb Power Calculator</h1>
+
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Intensity (I):</label>
+            <input type="number" name="intensity" required>
+
+            <label>Resistance (R):</label>
+            <input type="number" name="resistance" required>
+
+            <button type="submit">Calculate Power</button>
+        </form>
+
+        {% if result %}
+            <h2>Power (P) = {{ result }} Watts</h2>
+        {% endif %}
+    </div>
+    </center>
+</body>
+</html>
+
+views.py
+
+from django.shortcuts import render
+
+def azar(request):
+    result = None
+    if request.method == "POST":
+        try:
+            I = float(request.POST.get("intensity"))
+            R = float(request.POST.get("resistance"))
+            result = (I ** 2) * R
+        except:
+            result = "Invalid input"
+    return render(request, "calc/mohamed.html", {"result": result})
+
+urls.py
+
+from django.contrib import admin
+from django.urls import path
+from calc import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.azar, name='azar'),
+]
 # SERVER SIDE PROCESSING:
+<img width="614" height="146" alt="image" src="https://github.com/user-attachments/assets/e0e69531-ac61-4fd5-b29f-62ee6b0b2a89" />
+
+<img width="627" height="356" alt="image" src="https://github.com/user-attachments/assets/23825e50-f7b2-4f5b-bb1d-b58e2a2ff04c" />
+
 # HOMEPAGE:
 # RESULT:
 The program for performing server side processing is completed successfully.
