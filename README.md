@@ -29,6 +29,7 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 # PROGRAM :mohamed.html
+~~~
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,6 +129,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.azar, name='azar'),
 ]
+~~~
 # SERVER SIDE PROCESSING:
 <img width="614" height="146" alt="image" src="https://github.com/user-attachments/assets/e0e69531-ac61-4fd5-b29f-62ee6b0b2a89" />
 
